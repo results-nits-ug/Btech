@@ -1,0 +1,36 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 20px;
+}
+
+.head {
+    display: flex;
+    background-color: #ff8c00;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse; /* Removes gaps between borders */
+}
+
+th, td {
+    border: 1px solid #ccc; /* Light grey border */
+    padding: 8px; /* Spacing within cells */
+    text-align: left; /* Aligns text to the left */
+}
+
+th {
+    background-color: #ca4248; /* Light grey background for headers */
+}
+
+tr:hover {
+    background-color: #f5f5f5; /* Highlight row on hover */
+}
+
+tr:nth-child(even) {
+    background-color: #ff8c00; /* Light background for even rows */
+}
+
+.elm {
+    padding-left: 20px;
+}
