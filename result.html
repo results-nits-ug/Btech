@@ -1,15 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Result</title>
     <link rel="stylesheet" href="Rstyles.css">
+    <style>
+        table {
+            width: 90%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+        
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: center;
+        }
+        
+        th {
+            background-color: #ca4248;
+            color: white;
+        }
+        
+        tr {
+            cursor: pointer;
+        }
+        
+        .details {
+            display: none;
+            margin-top: 10px;
+        }
+    </style>
 </head>
+
 <body>
-    <header><img src="Headerimg.PNG" alt=""></header><div class="head">
-    <p class="elm">Student Name : Deepak Kumar Meena </p> <p class="elm">Enrollment No : 221310017</p> <p class="elm">Program : Bachelor of Technology</p> <p class="elm">Branch : Mechanical Engineering</p>
-</div>
+    <header><img src="Headerimg.PNG" alt=""></header>
+    <div class="head">
+        <p class="elm">Student Name : Nikhil Viswas</p>
+        <p class="elm">Enrollment No : 221320012</p>
+        <p class="elm">Program : Bachelor of Technology</p>
+        <p class="elm">Branch : Civil Engineering</p>
+    </div>
     <table>
         <thead>
             <tr>
@@ -21,35 +55,263 @@
             </tr>
         </thead>
         <tbody>
-            <tr>
+            <tr onclick="showDetails(1)">
                 <td>First Semester</td>
                 <td>20</td>
-                <td>6.72</td>
-                <td>6.72</td>
+                <td>5.7</td>
+                <td>5.7</td>
                 <td>Provisional</td>
             </tr>
-            <tr>
+            <tr onclick="showDetails(2)">
                 <td>Second Semester</td>
-                <td>20</td>
-                <td>7.10</td>
-                <td>6.91</td>
+                <td>13</td>
+                <td>3.25</td>
+                <td>4.48</td>
                 <td>Provisional</td>
             </tr>
-            <tr>
+            <tr onclick="showDetails(3)">
                 <td>Third Semester</td>
-                <td>20</td>
-                <td>7.39</td>
-                <td>7.07</td>
+                <td>10</td>
+                <td>2.5</td>
+                <td>3.32</td>
                 <td>Provisional</td>
             </tr>
-            <tr>
+            <tr onclick="showDetails(4)">
                 <td>Fourth Semester</td>
+                <td>4</td>
+                <td>1</td>
+                <td>3.11</td>
+                <td>Provisional</td>
+            </tr>
+            <tr onclick="showDetails(5)">
+                <td>Fifth Semester</td>
                 <td>20</td>
-                <td>6.91</td>
-                <td>7.03</td>
+                <td>6.9</td>
+                <td>3.87</td>
                 <td>Provisional</td>
             </tr>
         </tbody>
     </table>
+
+    <div id="details" class="details">
+        <h3>Semester Details</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Subject Code</th>
+                    <th>Subject Name</th>
+                    <th>Credit</th>
+                    <th>Grade</th>
+                </tr>
+            </thead>
+            <tbody id="details-body">
+                <!-- Details will be dynamically added here -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        const semesterData = {
+            1: [{
+                subjectcode: "CELB102",
+                subjectname: "Fundamentals Of Engineering Mechanics",
+                credits: 3,
+                grade: "C"
+            }, {
+                subjectcode: "CELB103",
+                subjectname: "Environmental Studies",
+                credits: 3,
+                grade: "D"
+            }, {
+                subjectcode: "CELB151",
+                subjectname: "Elements Of Civil Engineering",
+                credits: 2,
+                grade: "D"
+            }, {
+                subjectcode: "CEPB121",
+                subjectname: "Nature And Care",
+                credits: 1,
+                grade: "B"
+            }, {
+                subjectcode: "HMPB102",
+                subjectname: "Communication Skills",
+                credits: 1,
+                grade: "C"
+            }, {
+                subjectcode: "CYBB100",
+                subjectname: "Engineering Chemistry",
+                credits: 3,
+                grade: "D"
+            }, {
+                subjectcode: "ECBB101",
+                subjectname: "Basics Of Electrical and Electronics Engineering",
+                credits: 4,
+                grade: "B"
+            }, {
+                subjectcode: "MEBB119",
+                subjectname: "Engineering Graphics And Autocad",
+                credits: 3,
+                grade: "D"
+            }],
+            2: [{
+                subjectcode: "CELN106",
+                subjectname: "Civil Engineering Materials And Construction techniques",
+                credits: 3,
+                grade: "D"
+            }, {
+                subjectcode: "MALB159",
+                subjectname: "Mathematics for Engineers-1",
+                credits: 3,
+                grade: "D"
+            }, {
+                subjectcode: "CEPB171",
+                subjectname: "Site Visit Report",
+                credits: 1,
+                grade: "D"
+            }, {
+                subjectcode: "EAPB",
+                subjectname: "Extra Academic Activity",
+                credits: 0,
+                grade: "U"
+            }, {
+                subjectcode: "CEBB112",
+                subjectname: "Mechanics Of Solids",
+                credits: 0,
+                grade: "F"
+            }, {
+                subjectcode: "HMBB101",
+                subjectname: "Human Ethics",
+                credits: 0,
+                grade: "F"
+            }, {
+                subjectcode: "MEBB163",
+                subjectname: "Engineering Workshop Practice",
+                credits: 2,
+                grade: "D"
+            }, {
+                subjectcode: "PHBB111",
+                subjectname: "Engineering Physics",
+                credits: 4,
+                grade: "D"
+            }],
+            3: [{
+                subjectcode: "CEBB262",
+                subjectname: "Design Of Concrete Structures",
+                credits: 0,
+                grade: "F"
+            }, {
+                subjectcode: "CEBB264",
+                subjectname: "Hydrology And Irrigation Engineering",
+                credits: 0,
+                grade: "F"
+            }, {
+                subjectcode: "CELB251",
+                subjectname: "Estimation Costing And Valuation",
+                credits: 2,
+                grade: "D"
+            }, {
+                subjectcode: "CEBB261",
+                subjectname: "Transportation Engineering-1",
+                credits: 4,
+                grade: "D"
+            }, {
+                subjectcode: "CEBB265",
+                subjectname: "Environmental Engineering-1",
+                credits: 4,
+                grade: "D"
+            }, {
+                subjectcode: "CEBB263",
+                subjectname: "Surveying",
+                credits: 0,
+                grade: "F"
+            }],
+            4: [{
+                subjectcode: "CELB201",
+                subjectname: "Structural Analysis",
+                credits: 0,
+                grade: "F"
+            }, {
+                subjectcode: "CELB211",
+                subjectname: "Fluid Mechanics",
+                credits: 0,
+                grade: "F"
+            }, {
+                subjectcode: "CEBB212",
+                subjectname: "Concrete Technology",
+                credits: 0,
+                grade: "F"
+            }, {
+                subjectcode: "CEBB213",
+                subjectname: "Geotechnical Engineering-1",
+                credits: 4,
+                grade: "D"
+            }, {
+                subjectcode: "CEBB214",
+                subjectname: "Building Planning, Drawing And Construction",
+                credits: 0,
+                grade: "F"
+            }, {
+                subjectcode: "CSBB249",
+                subjectname: "Computer Programming",
+                credits: 0,
+                grade: "F"
+            }],
+            5: [{
+                subjectcode: "CELB301",
+                subjectname: "Structural Analysis-2",
+                credits: 4,
+                grade: "B+"
+            }, {
+                subjectcode: "CELB302",
+                subjectname: "Liquid And Solid Waste Engineering",
+                credits: 4,
+                grade: "B"
+            }, {
+                subjectcode: "CELB304",
+                subjectname: "Transportation Engineering-2",
+                credits: 4,
+                grade: "C"
+            }, {
+                subjectcode: "CELB303",
+                subjectname: "Open Channel Flow",
+                credits: 4,
+                grade: "A"
+            }, {
+                subjectcode: "MALB359",
+                subjectname: "Mathematics For Engineering-2",
+                credits: 3,
+                grade: "B"
+            }, {
+                subjectcode: "CEBB325",
+                subjectname: "Advanced Surveying",
+                credits: 3,
+                grade: "B"
+            }]
+        };
+
+        function showDetails(semester) {
+            const detailsBody = document.getElementById("details-body");
+            const detailsDiv = document.getElementById("details");
+
+            // Clear existing details
+            detailsBody.innerHTML = "";
+
+            // Populate details for the selected semester
+            semesterData[semester].forEach(item => {
+                const row = document.createElement("tr");
+                row.innerHTML = `
+                    <td>${item.subjectcode}</td>
+                    <td>${item.subjectname}</td>
+                    <td>${item.credits}</td>
+                    <td>${item.grade}</td>
+                `;
+                detailsBody.appendChild(row);
+            });
+
+            // Show the details section
+            detailsDiv.style.display = "block";
+        }
+    </script>
 </body>
+
 </html>
